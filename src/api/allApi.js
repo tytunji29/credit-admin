@@ -10,13 +10,13 @@ const api = axios.create({
 
 // ====================== AUTH APIs ======================
 export const login = async (credentials) => {
-  const response = await api.post("/auth/login", credentials);
-  return response.data;
+  const response = await api.post("/LoginUser", credentials);
+  return response;
 };
 
 export const register = async (data) => {
-  const response = await api.post("/auth/register", data);
-  return response.data;
+  const response = await api.post("/AddAdminUser", data);
+  return response;
 };
 
 // ====================== USER APIs ======================
@@ -43,5 +43,15 @@ export const addCountry = async (country) => {
 
 export const deleteCountry = async (id) => {
   const response = await api.delete(`/countries/${id}`);
+  return response.data;
+};
+// ====================== LockUser APIs ======================
+export const lockUser = async (imei) => {
+  const response = await api.put(`/LockDevice/${imei}`);
+  return response.data;
+};
+
+export const unlockUser = async (imei) => {
+  const response = await api.put(`/UnlockDevice/${imei}`);
   return response.data;
 };

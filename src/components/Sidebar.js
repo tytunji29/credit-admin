@@ -29,7 +29,9 @@ export default function Sidebar() {
           <li>
             <Link
               to="/dashboard"
-              className="flex items-center gap-3 px-4 py-2 hover:bg-gray-700 rounded-md"
+              className={`flex items-center px-4 py-2 hover:bg-gray-700 rounded-md no-underline text-white ${
+                collapsed ? "justify-center" : "gap-3"
+              }`}
             >
               <Home size={20} />
               {!collapsed && <span>Dashboard</span>}
@@ -38,10 +40,12 @@ export default function Sidebar() {
           <li>
             <Link
               to="/users"
-              className="flex items-center gap-3 px-4 py-2 hover:bg-gray-700 rounded-md"
+              className={`flex items-center px-4 py-2 hover:bg-gray-700 rounded-md no-underline text-white ${
+                collapsed ? "justify-center" : "gap-3"
+              }`}
             >
               <Users size={20} />
-              {!collapsed && <span>Users</span>}
+              {!collapsed && <span>Defaulters</span>}
             </Link>
           </li>
         </ul>
@@ -49,7 +53,11 @@ export default function Sidebar() {
 
       {/* Logout */}
       <div className="p-4 border-t border-gray-700">
-        <button className="flex items-center gap-3 px-4 py-2 w-full hover:bg-gray-700 rounded-md">
+        <button
+          className={`flex items-center w-full hover:bg-gray-700 rounded-md ${
+            collapsed ? "justify-center p-2" : "gap-3 px-4 py-2"
+          }`}
+        >
           <LogOut size={20} />
           {!collapsed && <span>Logout</span>}
         </button>

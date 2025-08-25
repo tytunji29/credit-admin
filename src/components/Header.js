@@ -1,6 +1,15 @@
-import React, { useState } from "react";
+
+import React,{ useEffect, useState } from "react";
 
 const Header = () => {
+  const [fullName, setFullName] = useState("");
+
+  useEffect(() => {
+    const storedName = sessionStorage.getItem("fullName");
+    if (storedName) {
+      setFullName(storedName);
+    }
+  }, []);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
@@ -35,7 +44,12 @@ const Header = () => {
   /> */}
   
   {/* Name */}
-  <span className="hidden md:inline text-gray-800 font-medium">Admin</span>
+   {fullName ? (
+          <span className="hidden md:inline text-gray-800 font-medium">Welcome, {fullName}</span>
+        ) : (
+          <span>Admin</span>
+        )}
+ 
 
   {/* Dropdown arrow */}
   <svg
